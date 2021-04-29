@@ -66,7 +66,7 @@
       <HintPath>packages\EXILED.2.10.0-beta\lib\net472\Exiled.Updater.dll</HintPath>
     </Reference>
     <Reference Include="Mirror">
-      <HintPath>..\..\..\Desktop\SCP\SCPSL_Data\Managed\Mirror.dll</HintPath>
+      <HintPath>References\Mirror.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
