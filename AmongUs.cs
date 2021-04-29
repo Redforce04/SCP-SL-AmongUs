@@ -9,9 +9,9 @@ namespace AmongUs
     /// </summary>
     public class AmongUs : Plugin<Config>
     {
-        public override string Author => "Redforce04";
+        public override string Author => "Redforce04, Zereth, EsserGaming";
         public override string Name => "AmongUs";
-        public override string Prefix => "among_us";
+        public override string Prefix => "amongus";
         public override PluginPriority Priority => PluginPriority.Default;
         public override Version RequiredExiledVersion => new Version(2, 10, 0);
         public override Version Version => new Version(1, 0, 0);

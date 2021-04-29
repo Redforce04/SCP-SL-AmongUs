@@ -25,7 +25,8 @@ namespace AmongUs.Commands
 
         protected override bool ExecuteParent(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
-            throw new NotImplementedException();
+            response = $"Incorrect usage. Proper command usage: amongus (enable/disable/list/setimposter/removeimposter/revive)";
+            return false;
         }
     }
 }
