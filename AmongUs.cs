@@ -1,4 +1,5 @@
-﻿using Exiled.API.Enums;
+﻿using AmongUs.API;
+using Exiled.API.Enums;
 using Exiled.API.Features;
 using System;
 
@@ -17,10 +18,13 @@ namespace AmongUs
         public override Version Version => new Version(1, 0, 0);
 
         public static AmongUs Singleton { get; private set; }
+        
+        public GamemodeManager GamemodeManager { get; private set; }
 
         public override void OnEnabled()
         {
             Singleton = this;
+            GamemodeManager = new GamemodeManager();
 
             base.OnEnabled();
         }
@@ -28,6 +32,7 @@ namespace AmongUs
         public override void OnDisabled()
         {
             Singleton = null;
+            GamemodeManager = null;
 
             base.OnDisabled();
         }

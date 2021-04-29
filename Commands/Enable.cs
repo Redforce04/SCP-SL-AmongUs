@@ -13,23 +13,39 @@ namespace AmongUs.Commands
 
         public string[] Aliases { get; } = { "en" };
 
-        public string Description { get; } = "Enables the gamemode for the next round.";
+        public string Description { get; } = "Enables the gamemode for the next round. (Round restart required)";
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
-            if (!Permissions.CheckPermission(sender, "amgus.enable"))
+            if (AmongUs.Singleton.GamemodeManager.Started)
             {
-                response = "You do not have permission to begin the event round.";
+                response = "The among us gamemode has already started.";
                 return false;
             }
-            if (API.API.Running)
+            if (AmongUs.Singleton.GamemodeManager.Enabled)
             {
-                response = "The round is already started.";
+                response = "The among us gamemode is already enabled.";
                 return false;
             }
-            API.API.StartRound();
-            response = $"Starting Among Us Event Round, Made by {AmongUs.Singleton.Author}";
+            AmongUs.Singleton.GamemodeManager.EnableGamemode();
+            response = "The among us gamemode has been enabled for the next round.";
             return true;
+
+            // Need to migrate to new API!
+            //
+            //if (!Permissions.CheckPermission(sender, "amgus.enable"))
+            //{
+            //    response = "You do not have permission to begin the event round.";
+            //    return false;
+            //}
+            //if (API.API.Running)
+            //{
+            //    response = "The round is already started.";
+            //    return false;
+            //}
+            //API.API.StartRound();
+            //response = $"Starting Among Us Event Round, Made by {AmongUs.Singleton.Author}";
+            //return true;
         }
     }
 }

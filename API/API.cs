@@ -1,28 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Exiled.API.Extensions;
 using Exiled.API.Features;
-using Exiled.API.Extensions;
+using System;
+using System.Collections.Generic;
 
 namespace AmongUs.API
 {
+    [Obsolete("Need to migrate to new API.")]
     /// <summary>
     /// The Main API
     /// </summary>
     public static class API
     {
+        [Obsolete("Need to migrate to new API.")]
         public static Dictionary<string, PlayerInfo> ImposterList = new Dictionary<string, PlayerInfo>();
+        [Obsolete("Need to migrate to new API.")]
         public static bool Running = false;
+        [Obsolete("Need to migrate to new API.")]
         public static void StartRound()
         {
 
         }
+        [Obsolete("Need to migrate to new API.")]
         public static void StopRound()
         {
 
         }
+        [Obsolete("Need to migrate to new API.")]
         public static void SetImposter(this Player ply)
         {
             PlayerInfo plyinfo = new PlayerInfo
@@ -51,7 +54,9 @@ namespace AmongUs.API
             else
                 ImposterList.Add(ply.UserId, plyinfo);
         }
+        [Obsolete("Need to migrate to new API.")]
         public static void TryRemoveImposter(this Player ply) => ImposterList.Remove(ply.UserId);
+        [Obsolete("Need to migrate to new API.")]
         public static bool IsImposter(this Player ply) => ImposterList.ContainsKey(ply.UserId) && (ImposterList[ply.UserId].Role == AURole.Imposter);
     }
 }
