@@ -97,11 +97,17 @@ namespace AmongUs.API
             {
                 if (SecondaryEventsEnabled) { return; }
 
+                Handlers.Server.RespawningTeam += EventManager.RespawningTeam;
+                Handlers.Server.EndingRound += EventManager.EndingRound;
+
                 SecondaryEventsEnabled = true;
             }
             else
             {
                 if (!SecondaryEventsEnabled) { return; }
+
+                Handlers.Server.RespawningTeam -= EventManager.RespawningTeam;
+                Handlers.Server.EndingRound -= EventManager.EndingRound;
 
                 SecondaryEventsEnabled = false;
             }

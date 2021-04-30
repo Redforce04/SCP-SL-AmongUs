@@ -1,4 +1,5 @@
-﻿using Exiled.API.Features;
+﻿using AmongUs.Extensions;
+using Exiled.API.Features;
 using Exiled.Events.EventArgs;
 
 namespace AmongUs.API
@@ -75,6 +76,52 @@ namespace AmongUs.API
             AmongUs.Singleton.GamemodeManager.EnableGamemode(false);
         }
 
+        /// <summary>
+        /// <para>
+        /// <b>Secondary Event</b>
+        /// </para>
+        /// <para>
+        /// Called when respawning players.
+        /// </para>
+        /// </summary>
+        /// <param name="ev">Argument passed by Exiled.</param>
+        internal void RespawningTeam(RespawningTeamEventArgs ev)
+        {
+            ev.IsAllowed = false;
+        }
+
+        /// <summary>
+        /// <para>
+        /// <b>Secondary Event</b>
+        /// </para>
+        /// <para>
+        /// Called before ending the round.
+        /// </para>
+        /// </summary>
+        /// <param name="ev">Argument passed by Exiled.</param>
+        internal void EndingRound(EndingRoundEventArgs ev)
+        {
+            int crewmates = AUPlayer.List.GetCrewmatesCount();
+            int imposters = AUPlayer.List.GetImpostersCount();
+
+            ev.IsAllowed = false;
+
+            if (crewmates == 0 || crewmates <= imposters) // Imposter win
+            {
+                ev.IsAllowed = true;
+                return;
+            }
+            if (imposters == 0 && crewmates > 0) // Crewmate win
+            {
+                ev.IsAllowed = true;
+                return;
+            }
+            if (imposters == 0 && crewmates == 0) // Draw
+            {
+                ev.IsAllowed = true;
+                return;
+            }
+        }
 
         /// <summary>
         /// Called when player is verified.

@@ -13,6 +13,10 @@ namespace AmongUs.API
         /// </summary>
         None = -1,
         /// <summary>
+        /// Spectator role.
+        /// </summary>
+        Spectator,
+        /// <summary>
         /// Crewmate role.
         /// </summary>
         Crewmate,
