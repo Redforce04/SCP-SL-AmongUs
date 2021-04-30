@@ -17,6 +17,12 @@ namespace AmongUs.Commands
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
+            if (!sender.CheckPermission("amgus.start"))
+            {
+                response = "Missing permissions.";
+                return false;
+            }
+
             if (AmongUs.Singleton.GamemodeManager.Started)
             {
                 response = "The among us gamemode has already started.";
